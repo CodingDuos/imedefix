@@ -18,9 +18,11 @@ class UpcomingTabView extends StatefulWidget {
   final seltedTime;
   final String doctorname;
   final String specialist;
+  final String meetingId;
   const UpcomingTabView(
       {super.key,
       required this.id,
+      required this.meetingId,
       required this.model,
       required this.doctorname,
       required this.specialist,
@@ -217,6 +219,7 @@ class _UpcomingTabViewState extends State<UpcomingTabView> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => WaitingRoomScreen(
+                                      meetingID: widget.meetingId,
                                       doctorname: widget.doctorname,
                                       specialist: widget.specialist,
                                       remaingtime: widget.seltedTime,

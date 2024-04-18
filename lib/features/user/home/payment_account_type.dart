@@ -186,7 +186,7 @@ class _PaymentAccountTypeState extends State<PaymentAccountType> {
                       ],
                       note: "Contact us for any questions on your order.",
                       onSuccess: (Map params) async {
-                        controller.BookAppointmentMethod();
+                        controller.BookAppointmentMethod(context);
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(

@@ -23,7 +23,6 @@ Future<void> main() async {
         defaultRingtoneType: DefaultRingtoneType.Ringtone)
   ]);
   WidgetsFlutterBinding.ensureInitialized();
-
   await Firebase.initializeApp();
   runApp(const ProviderScope(child: MyApp()));
 }

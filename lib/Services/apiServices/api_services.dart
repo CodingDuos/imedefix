@@ -126,7 +126,7 @@ class ApiServices {
   ///    doctor individual register Api
 
   Future<DoctorIndRegisterModel?> doctorIndividualRegisterApi(
-      DoctorIndRegisterModel data) async {
+      DoctorIndRegisterModel data, Map map, BuildContext context) async {
     var url = Uri.parse('$urls/api/doctorpersnoldetails');
 
     try {
@@ -135,23 +135,28 @@ class ApiServices {
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
-        body: {},
+        body: jsonEncode(map),
       );
-
-      print('Register  success: ${data.toJson()}');
 
       print('Register status code: ${response.statusCode}');
       final responseData = json.decode(response.body);
-      if (response.statusCode == 200) {
-        Get.snackbar("Doctor register  Successful", "You are now logged in.",
-            snackPosition: SnackPosition.BOTTOM);
+      if (response.statusCode == 201) {
+        Global().saveUserId('');
+
+        Global().saveUserId(responseData['id'].toString());
+
+        Fluttertoast.showToast(msg: 'Doctor Registered Suceessfully');
+
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: ((context) => DoctorMainMenuScreenMain())));
       } else if (response.statusCode == 409) {
         Fluttertoast.showToast(
             msg: responseData['email'] ?? 'User already exists');
       } else {
         Fluttertoast.showToast(
-            msg:
-                'doctor a register: ${responseData['email'] ?? 'doctor already register '}');
+            msg: 'Doctor Registration Failed :${response.statusCode}');
       }
     } catch (e) {
       print('Error during registration: $e');

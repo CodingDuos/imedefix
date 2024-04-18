@@ -1,10 +1,16 @@
 // Checked with Source Downloaded.
+import 'dart:convert';
+
 import 'package:awesome_notifications/awesome_notifications.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:idaawee/utils/global.dart';
+import 'package:http/http.dart' as http;
+
+String serverKey =
+    'key=AAAAAWnrHQw:APA91bHnRSyRdSnbWoyStY1U4FUaS_BJtLFo0RG_nQxgx6I8Gm3MEB_8VNH94UukcKw1Vi7gpCWrCVEPu0cYWnaUG7Go4xx69sbeH9orRpYLE8ytzyV_aCSr9FpkYZHOB6-WKilYpVOA';
 
 class PushNotificationService {
   final FirebaseMessaging _messaging = FirebaseMessaging.instance;
@@ -45,8 +51,7 @@ class PushNotificationService {
 
       await saqvetoken(token.toString());
 
-      _messaging.subscribeToTopic('alldrivers');
-      _messaging.subscribeToTopic('allusers');
+      _messaging.subscribeToTopic('allhospitals');
     } else {
       return;
     }
@@ -54,9 +59,29 @@ class PushNotificationService {
 
   saqvetoken(String token) async {
     String? userId = await Global().getUserId();
-    String? userindex = await Global().getUserindex();
+
     if (userId != null || userId!.isNotEmpty) {
       driversRef.child(userId.toString()).child('token').set(token);
+    }
+  }
+
+  fetchToken(String doctorId) async {
+    try {
+      String tokenfetched = '';
+      DatabaseReference doctorsRef =
+          FirebaseDatabase.instance.ref().child('hospitals');
+      await doctorsRef
+          .child(doctorId)
+          .child('token')
+          .once()
+          .then((DatabaseEvent databaseEvent) {
+        String? token = databaseEvent.snapshot.value as String?;
+        tokenfetched = token.toString();
+      });
+      return tokenfetched;
+    } catch (e) {
+      print('Error fetching token: $e');
+      return null;
     }
   }
 }
@@ -85,4 +110,36 @@ Future<void> BackgroundHandler(RemoteMessage remoteMessage) async {
             color: Colors.green,
             autoDismissible: true),
       ]);
+}
+
+sendNotificationToDoctor(String token, context) async {
+  Map<String, String> headerMap = {
+    'Content-Type': 'application/json',
+    'Authorization': serverKey,
+  };
+
+  Map notificationMap = {
+    'body': 'calling Request',
+    'title': 'New call meeting Request',
+  };
+
+  Map dataMap = {
+    'click_action': 'FLUTTER_NOTIFICATION_CLICK',
+    'id': '1',
+    'status': 'done',
+    'rideType': ""
+  };
+
+  Map sendNotificationMap = {
+    'notification': notificationMap,
+    'data': dataMap,
+    'priority': 'high',
+    'to': token,
+  };
+
+  await http.post(
+    Uri.parse('https://fcm.googleapis.com/fcm/send'),
+    headers: headerMap,
+    body: jsonEncode(sendNotificationMap),
+  );
 }

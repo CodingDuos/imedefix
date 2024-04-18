@@ -163,7 +163,7 @@ class WalletSummaryPage extends StatelessWidget {
               NextButton(
                 back: () {},
                 onPressed: () async {
-                  controller.BookAppointmentMethod();
+                  controller.BookAppointmentMethod(context);
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(

@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:get/get.dart';
 import 'package:idaawee/commons/common_imports/common_libs.dart';
+import 'package:idaawee/pushnotificationservice.dart';
 
 import 'package:idaawee/universal_models/doctor_models/doctor_SpecificDetailsModel.dart';
 import 'package:idaawee/universal_models/doctor_models/doctor_individual_models/doctorwslots_model.dart';
@@ -134,7 +135,7 @@ class UserHomeScreenProvider extends GetxController {
     }
   }
 
-  void BookAppointmentMethod() async {
+  void BookAppointmentMethod(BuildContext contexts) async {
     String? useriD = await Global().getUserId();
     DateTime now = DateTime.now();
 
@@ -163,8 +164,10 @@ class UserHomeScreenProvider extends GetxController {
         bookingDate: formattedDate,
         userId: useriD.toString());
 
-    services.bookUserappointmentApi(bookAppointmentMode).then((value) {
+    services.bookUserappointmentApi(bookAppointmentMode).then((value) async {
       Get.snackbar('doctor register', 'doctor already register ');
+      String deviceToken = await PushNotificationService().fetchToken(doctorId);
+      sendNotificationToDoctor(deviceToken, contexts);
     }).onError((error, stackTrace) {
       Get.snackbar(
           'doctor register', 'doctor registration ${error!.toString()}');

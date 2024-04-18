@@ -2,7 +2,8 @@
 
 import 'package:agora_uikit/agora_uikit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
+import 'package:idaawee/credientals/contants.dart';
+import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
 import 'package:idaawee/features/user/home/widget/consultation.dart';
 
 // import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
@@ -84,4 +85,31 @@ class _VideoCallingScreenState extends State<VideoCallingScreen> {
 }
 
 // Ensure you have your ConsultationScreen widget defined
+class ZegoCallingScreen extends StatelessWidget {
+  const ZegoCallingScreen(
+      {Key? key,
+      required this.callID,
+      required this.userId,
+      required this.patientname})
+      : super(key: key);
+  final String callID;
+  final String userId;
+  final String patientname;
 
+  @override
+  Widget build(BuildContext context) {
+    return ZegoUIKitPrebuiltCall(
+        appID: Credientals.appId,
+        appSign: Credientals.appSign,
+        userID: userId,
+        userName: patientname,
+        callID: callID,
+        config: ZegoUIKitPrebuiltCallConfig.oneOnOneVideoCall()
+          ..topMenuBar.isVisible = true
+          ..topMenuBar.buttons = [
+            ZegoCallMenuBarButtonName.minimizingButton,
+            ZegoCallMenuBarButtonName.showMemberListButton,
+            ZegoCallMenuBarButtonName.soundEffectButton,
+          ]);
+  }
+}

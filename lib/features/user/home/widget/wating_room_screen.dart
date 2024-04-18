@@ -10,10 +10,12 @@ class WaitingRoomScreen extends StatefulWidget {
       {super.key,
       required this.doctorname,
       required this.specialist,
+      required this.meetingID,
       this.remaingtime});
   final String doctorname;
   final String specialist;
   final remaingtime;
+  final String meetingID;
 
   @override
   State<WaitingRoomScreen> createState() => _WaitingRoomScreenState();
@@ -227,10 +229,12 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => VideoCallingScreen()));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => ZegoCallingScreen(
+                                  callID: widget.meetingID,
+                                  patientname: widget.doctorname,
+                                  userId: widget.doctorname,
+                                )));
                       },
                       child: Container(
                         width: screenWidth * 0.7,

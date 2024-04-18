@@ -41,7 +41,7 @@ class DoctorIndRegisterProvider extends GetxController {
 
   ApiServices services = ApiServices();
 
-  void doctorIndRegister() {
+  void doctorIndRegister(BuildContext context) {
     print('object');
     Once once = Once(
         oncedate: d_ind_once_date.value.text.toString(),
@@ -79,13 +79,51 @@ class DoctorIndRegisterProvider extends GetxController {
         daily: daily,
         weekly: weekly);
 
-    try {
-      services.doctorIndividualRegisterApi(doctorIndModel).then((value) {
-        if (value != null) {
-          print(value);
-          print('object khan mashwani ');
-          Get.snackbar('doctor register', 'doctor already register ');
+    Map datamap = {
+      "image": imagePath.toString(),
+      "name": d_ind_full_name.value.text.toString(),
+      "email": d_ind_email.value.text.toString(),
+      "password": d_ind_password.value.text.toString(),
+      "specialization": d_ind_specialization.value.text.toString(),
+      "conditionstreated": d_ind_condion_tretment.value.text.toString(),
+      "aboutself": d_ind_about_yourself.value.text.toString(),
+      "education": d_ind_education.value.text.toString(),
+      "college": d_ind_collage.value.text.toString(),
+      "license": d_ind_licene_number.value.text.toString(),
+      "yearofexperience": d_ind_years_of_experiance.value.text.toString(),
+      "status": false,
+      "once": [
+        {
+          "date": once.oncedate,
+          "timefrom": once.oncetimefrom,
+          "timetill": once.oncetimetill,
+          "consultationfees": once.consultationfees
         }
+      ],
+      "daily": [
+        {
+          "datefrom": daily.dailydatefrom,
+          "datetill": daily.dailydatetill,
+          "timefrom": daily.dailytimefrom,
+          "timetill": daily.dailytimetill,
+          "consultationfees": daily.dailyconsultationfree
+        }
+      ],
+      "weekly": [
+        {
+          "day": weekly.weeklyday,
+          "timefrom": weekly.weektimefrom,
+          "timetill": weekly.weektimetill,
+          "consultationfees": weekly.weekconsultationfree
+        },
+      ]
+    };
+
+    try {
+      services
+          .doctorIndividualRegisterApi(doctorIndModel, datamap, context)
+          .then((value) {
+        if (value != null) {}
       }).onError((error, stackTrace) {
         Get.snackbar(
             'doctor register', 'doctor registration ${error!.toString()}');

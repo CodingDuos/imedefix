@@ -106,6 +106,7 @@ class UAppointTab extends StatelessWidget {
                   child: TabBarView(
                 children: [
                   UpcomingTabView(
+                      meetingId: model.id.toString(),
                       model: model,
                       doctorname: doctorname,
                       specialist: specialist,

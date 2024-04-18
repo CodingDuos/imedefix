@@ -193,7 +193,7 @@ class UAboutDoctorTabview extends StatelessWidget {
                 back: () {},
                 onPressed: () {
                   print('object khan mashwani');
-                  contoller.doctorIndRegister();
+                  contoller.doctorIndRegister(context);
                 },
                 isbackbuton: false,
               ),
