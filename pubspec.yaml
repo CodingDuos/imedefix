@@ -69,7 +69,7 @@ dependencies:
   fluttertoast: ^8.1.2
   fpdart: ^1.0.0
   get: ^4.6.6
-  google_fonts: ^6.1.0
+  google_fonts: 6.1.0
   google_sign_in: ^6.1.4
   image_picker: ^1.0.2
   intl: ^0.18.1
@@ -84,6 +84,7 @@ dependencies:
   table_calendar: ^3.0.9
   wolt_modal_sheet: ^0.1.4
   zego_uikit_prebuilt_call: ^4.8.4
+  zego_zimkit: ^1.17.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

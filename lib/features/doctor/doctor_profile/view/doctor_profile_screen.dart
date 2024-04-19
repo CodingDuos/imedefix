@@ -10,16 +10,11 @@ import 'package:idaawee/features/doctor/doctor_profile/controller/main_menu_cont
 import 'package:idaawee/features/doctor/doctor_profile/view/doctor_edit_profile_screen.dart';
 import 'package:idaawee/features/doctor/doctor_profile/widgets/d_profile_tile.dart';
 import 'package:idaawee/features/doctor/home%20copy/doctor_profile/Editdoctor_profile_screen2.dart';
-import 'package:idaawee/features/splash_and_onboarding/views/splash_screen.dart';
 import 'package:idaawee/providers/doctor_providers/doctor_individual_provider/doctor_ind_home_provider.dart';
-
-import 'package:idaawee/providers/user_providers/user_home_screen_provider.dart';
 import 'package:idaawee/routes/route_manager.dart';
-
 import 'package:idaawee/utils/constants/assets_manager.dart';
 import 'package:idaawee/utils/constants/font_manager.dart';
 import 'package:idaawee/utils/global.dart';
-
 import '../../home copy/privacy_policy/information_centor_doctor.dart';
 
 class DoctorProfileScreen extends ConsumerStatefulWidget {

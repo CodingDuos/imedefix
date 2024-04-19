@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:idaawee/credientals/contants.dart';
 import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
 import 'package:idaawee/features/user/home/widget/consultation.dart';
+import 'package:zego_zimkit/zego_zimkit.dart';
 
 // import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
 // import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
@@ -39,7 +40,7 @@ class _VideoCallingScreenState extends State<VideoCallingScreen> {
   }
 
   void _endCall() async {
-    await _client.engine?.leaveChannel();
+    await _client.engine.leaveChannel();
     _navigateToConsultationScreen();
   }
 
@@ -111,5 +112,31 @@ class ZegoCallingScreen extends StatelessWidget {
             ZegoCallMenuBarButtonName.showMemberListButton,
             ZegoCallMenuBarButtonName.soundEffectButton,
           ]);
+  }
+}
+
+class ZIMKitDemoHomePage extends StatelessWidget {
+  const ZIMKitDemoHomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: AppBar(),
+        body: ZIMKitConversationListView(
+          onPressed: (context, conversation, defaultAction) {
+            Navigator.push(context, MaterialPageRoute(
+              builder: (context) {
+                return ZIMKitMessageListPage(
+                  conversationID: conversation.id,
+                  conversationType: conversation.type,
+                );
+              },
+            ));
+          },
+        ),
+      ),
+    );
   }
 }

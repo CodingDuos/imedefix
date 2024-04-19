@@ -1,96 +1,26 @@
 {
   "project_info": {
-    "project_number": "6071983372",
-    "firebase_url": "https://rider-b2a32-default-rtdb.firebaseio.com",
-    "project_id": "rider-b2a32",
-    "storage_bucket": "rider-b2a32.appspot.com"
+    "project_number": "717135858465",
+    "project_id": "imedefix",
+    "storage_bucket": "imedefix.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:6071983372:android:1ff6f43f7f068883323d29",
+        "mobilesdk_app_id": "1:717135858465:android:bbf8f79cec7833f6774c60",
         "android_client_info": {
           "package_name": "com.example.idaawee"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "6071983372-vqbdoac3gnc40v06v0nfjc0i18fgbpa9.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.idaawee",
-            "certificate_hash": "b0c1e9ef16dd558c3a556f6d26d6e360616c0851"
-          }
-        },
-        {
-          "client_id": "6071983372-9f3475n47mcbtmmr4l5adpa8nt22ofgv.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAdfFds_1ncd_mgpnvBuSwTUbZABkVaiRM"
+          "current_key": "AIzaSyDZ_A0KvDF3J5oTOSmaHOubihiuBUgW2oY"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "6071983372-9f3475n47mcbtmmr4l5adpa8nt22ofgv.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "6071983372-oqduqo8epb8khjklklsv33ohm74gsf2f.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.webflutter"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:6071983372:android:0bc1a40ac764b9b5323d29",
-        "android_client_info": {
-          "package_name": "com.example.idaawee"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "6071983372-v5dhsno1eh9vr23f2ov31buer1k2cmsa.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.idaawee",
-            "certificate_hash": "b0c1e9ef16dd558c3a556f6d26d6e360616c0851"
-          }
-        },
-        {
-          "client_id": "6071983372-9f3475n47mcbtmmr4l5adpa8nt22ofgv.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAdfFds_1ncd_mgpnvBuSwTUbZABkVaiRM"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "6071983372-9f3475n47mcbtmmr4l5adpa8nt22ofgv.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "6071983372-oqduqo8epb8khjklklsv33ohm74gsf2f.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.webflutter"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

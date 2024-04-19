@@ -4,6 +4,7 @@ import 'package:idaawee/commons/common_imports/common_libs.dart';
 
 import 'package:idaawee/features/user/home/widget/video_calling_screen.dart';
 import 'package:idaawee/utils/constants/assets_manager.dart';
+import 'package:zego_zimkit/zego_zimkit.dart';
 
 class WaitingRoomScreen extends StatefulWidget {
   const WaitingRoomScreen(
@@ -259,7 +260,17 @@ class _WaitingRoomScreenState extends State<WaitingRoomScreen> {
                       height: 20,
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        ZIMKit()
+                            .connectUser(id: '1', name: 'Arbaz')
+                            .then((value) {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const ZIMKitDemoHomePage(),
+                            ),
+                          );
+                        });
+                      },
                       child: Container(
                         width: screenWidth * 0.7,
                         height: 50,

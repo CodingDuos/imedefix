@@ -3,22 +3,12 @@
 import 'package:get/get.dart';
 import 'package:idaawee/commons/common_imports/common_libs.dart';
 import 'package:idaawee/features/doctor/home%20copy/view/user_next_appointment_screen.dart';
-import 'package:idaawee/features/doctor/home/widgets/d_next_appointment_card.dart';
 import 'package:idaawee/features/user/home/widget/u_doctor_consulation_card.dart';
 import 'package:idaawee/features/user/our_speciallist/widgets/user_all_speciallist.dart';
-import 'package:idaawee/features/user/user_main_menu/controller/main_menu_controller.dart';
-import 'package:idaawee/features/user/user_notification/widget/u_notification_card.dart';
 import 'package:idaawee/providers/doctor_providers/doctor_individual_provider/doctor_ind_home_provider.dart';
-import 'package:idaawee/providers/user_providers/notification_provider.dart';
-import 'package:idaawee/providers/user_providers/user_home_screen_provider.dart';
-import 'package:idaawee/routes/route_manager.dart';
 import 'package:idaawee/universal_models/doctor_models/doctor_individual_models/confrom_oppointment_model.dart';
-import 'package:idaawee/universal_models/doctor_models/doctor_individual_models/get_doctor_book_oppointment.dart';
-import 'package:idaawee/universal_models/user_models/get_user_book_appointment_model.dart';
 import 'package:idaawee/utils/constants/font_manager.dart';
 import 'package:intl/intl.dart';
-import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
-import '../../../../utils/constants/app_constants.dart';
 
 class DNextAppointmentWidget extends StatefulWidget {
   @override

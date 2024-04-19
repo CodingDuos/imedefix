@@ -9,7 +9,14 @@ import 'package:idaawee/routes/route_manager.dart';
 import 'package:idaawee/utils/thems/theme.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 
+import 'package:zego_zimkit/zego_zimkit.dart';
+
 Future<void> main() async {
+  ZIMKit().init(
+    appID: 465834652, // your appid
+    appSign:
+        '57e9606d6656818e9ba846d6104c345ca2af98c4a265d74d6bdadb2be7e35190', // your appSign
+  );
   AwesomeNotifications().initialize(null, [
     NotificationChannel(
         channelKey: "call_channel",
